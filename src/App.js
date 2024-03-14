@@ -15,11 +15,22 @@ class App extends Component {
     this.setState(prevState => ({isDarkTheme: !prevState.isDarkTheme}))
   }
 
+  saveOnList = objectDetails => {
+    this.setState(prevState => ({
+      saveList: [...prevState.saveList, objectDetails],
+    }))
+  }
+
   render() {
-    const {isDarkTheme} = this.state
+    const {isDarkTheme, savedList} = this.state
     return (
       <CartContext.Provider
-        value={{isDarkTheme, onChangeTheme: this.changeTheme}}
+        value={{
+          isDarkTheme,
+          savedList,
+          onChangeTheme: this.changeTheme,
+          moveToSaveList: this.saveOnList,
+        }}
       >
         <Switch>
           <Route exact path="/login" component={Login} />
