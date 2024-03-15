@@ -27,3 +27,8 @@ export const Description = styled.p`
   font-weight: 300;
   font-family: 'Roboto';
 `
+export const ContentAndSideBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`

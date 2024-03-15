@@ -1,4 +1,6 @@
-import {MdDarkMode, MdOutlineLightMode} from 'react-icons/md'
+import {MdDarkMode} from 'react-icons/md'
+import {MdOutlineLightMode} from 'react-icons/md'
+
 import {FaBars} from 'react-icons/fa'
 import {FiLogOut} from 'react-icons/fi'
 import CartContext from '../../context/CartContext'

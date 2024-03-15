@@ -41,5 +41,9 @@ export const Description = styled.p`
 color:${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')}
 font-weight:300;
 font-size:20px;
-
+`
+export const ContentAndSideBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `

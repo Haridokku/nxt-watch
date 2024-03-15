@@ -1,11 +1,13 @@
 import Header from '../Header'
 import CartContext from '../../context/CartContext'
+import SideBar from '../SideBar'
 
 import {
   NotFoundContainer,
   ImageElement,
   HeadingElement,
   Description,
+  ContentAndSideBar,
 } from './styledComponent'
 
 const NotFound = () => (
@@ -18,15 +20,18 @@ const NotFound = () => (
       return (
         <>
           <Header />
-          <NotFoundContainer isDarkTheme={isDarkTheme}>
-            <ImageElement src={imgUrl} alt="not-found" />
-            <HeadingElement isDarkTheme={isDarkTheme}>
-              Page not found
-            </HeadingElement>
-            <Description>
-              We are sorry, the page you requested could not found
-            </Description>
-          </NotFoundContainer>
+          <ContentAndSideBar>
+            <SideBar />
+            <NotFoundContainer isDarkTheme={isDarkTheme}>
+              <ImageElement src={imgUrl} alt="not-found" />
+              <HeadingElement isDarkTheme={isDarkTheme}>
+                Page not found
+              </HeadingElement>
+              <Description>
+                We are sorry, the page you requested could not found
+              </Description>
+            </NotFoundContainer>
+          </ContentAndSideBar>
         </>
       )
     }}

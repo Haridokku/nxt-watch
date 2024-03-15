@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 import Header from '../Header'
 import CartContext from '../../context/CartContext'
 import GamingItem from '../GamingItem'
+import SideBar from '../SideBar'
 
 import {
   HomeContainer,
@@ -17,6 +18,7 @@ import {
   UnorderedList,
   TrendingContainer,
   ImageContainer,
+  ContentAndSideBar,
 } from './styledComponent'
 
 const apiStatusConstants = {
@@ -137,9 +139,12 @@ class Gaming extends Component {
           return (
             <>
               <Header />
-              <HomeContainer isDarkTheme={isDarkTheme}>
-                {this.renderApiStatus()}
-              </HomeContainer>
+              <ContentAndSideBar>
+                <SideBar />
+                <HomeContainer isDarkTheme={isDarkTheme}>
+                  {this.renderApiStatus()}
+                </HomeContainer>
+              </ContentAndSideBar>
             </>
           )
         }}

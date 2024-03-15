@@ -8,6 +8,7 @@ import {FiSave} from 'react-icons/fi'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import CartContext from '../../context/CartContext'
+import SideBar from '../SideBar'
 import {
   ImageElement,
   Description,
@@ -29,6 +30,8 @@ import {
   ProfileDetails,
   DescriptionDetails,
   LikeButton,
+  ContentAndSideBar,
+  HomeContainer,
 } from './styledComponent'
 
 const apiStatusConstants = {
@@ -213,7 +216,12 @@ class VideoItemDetails extends Component {
     return (
       <>
         <Header />
-        {this.renderApiStatus()}
+        <ContentAndSideBar>
+          <SideBar />
+          <HomeContainer isDarkTheme={isDarkTheme}>
+            {this.renderApiStatus()}
+          </HomeContainer>
+        </ContentAndSideBar>
       </>
     )
   }

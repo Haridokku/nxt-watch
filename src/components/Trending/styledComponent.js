@@ -91,3 +91,8 @@ export const UnorderedList = styled.ul`
   flex-wrap: wrap;
   padding-left: 0px;
 `
+export const ContentAndSideBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`

@@ -125,3 +125,14 @@ export const LikeButton = styled.button`
   border: none;
   outline: none;
 `
+export const ContentAndSideBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+export const HomeContainer = styled.div`
+  background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
+  display: flex;
+  justify-content: center;
+  align-items: Center;
+`

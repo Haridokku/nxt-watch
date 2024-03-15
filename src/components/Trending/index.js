@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 import Header from '../Header'
 import CartContext from '../../context/CartContext'
 import TrendingItem from '../TrendingItem'
+import SideBar from '../SideBar'
 
 import {
   HomeContainer,
@@ -17,6 +18,7 @@ import {
   UnorderedList,
   TrendingContainer,
   ImageContainer,
+  ContentAndSideBar,
 } from './styledComponent'
 
 const apiStatusConstants = {
@@ -142,9 +144,12 @@ class Trending extends Component {
           return (
             <>
               <Header />
-              <HomeContainer isDarkTheme={isDarkTheme}>
-                {this.renderApiStatus()}
-              </HomeContainer>
+              <ContentAndSideBar>
+                <SideBar />
+                <HomeContainer isDarkTheme={isDarkTheme}>
+                  {this.renderApiStatus()}
+                </HomeContainer>
+              </ContentAndSideBar>
             </>
           )
         }}

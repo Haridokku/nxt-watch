@@ -7,6 +7,7 @@ import Cookies from 'js-cookie'
 import Header from '../Header'
 import CartContext from '../../context/CartContext'
 import VideoItem from '../VideoItem'
+import SideBar from '../SideBar'
 
 import {
   HomeContainer,
@@ -23,6 +24,8 @@ import {
   HeadingElement,
   RetryButton,
   UnorderedList,
+  ContentAndSideBar,
+  ContentAndPopUp,
 } from './styledComponent'
 
 const apiStatusConstants = {
@@ -195,21 +198,26 @@ class Home extends Component {
           return (
             <>
               <Header />
-              {this.renderPopupDetails()}
-              <HomeContainer isDarkTheme={isDarkTheme}>
-                <SearchContainer>
-                  <InputElement
-                    type="text"
-                    value={searchValue}
-                    isDarkTheme={isDarkTheme}
-                    placeHolder="search"
-                  />
-                  <CrossButton type="button">
-                    <IoIosSearch size={20} />
-                  </CrossButton>
-                </SearchContainer>
-                {this.renderApiStatus()}
-              </HomeContainer>
+              <ContentAndSideBar>
+                <SideBar />
+                <ContentAndPopUp>
+                  {this.renderPopupDetails()}
+                  <HomeContainer isDarkTheme={isDarkTheme}>
+                    <SearchContainer>
+                      <InputElement
+                        type="text"
+                        value={searchValue}
+                        isDarkTheme={isDarkTheme}
+                        placeHolder="search"
+                      />
+                      <CrossButton type="button">
+                        <IoIosSearch size={20} />
+                      </CrossButton>
+                    </SearchContainer>
+                    {this.renderApiStatus()}
+                  </HomeContainer>
+                </ContentAndPopUp>
+              </ContentAndSideBar>
             </>
           )
         }}
