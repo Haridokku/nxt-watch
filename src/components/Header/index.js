@@ -1,7 +1,5 @@
-import {MdDarkMode} from 'react-icons/md'
-import {MdOutlineLightMode} from 'react-icons/md'
-
-import {FaBars} from 'react-icons/fa'
+import {MdLightMode} from 'react-icons/md'
+import {FaBars, FaMoon} from 'react-icons/fa'
 import {FiLogOut} from 'react-icons/fi'
 import CartContext from '../../context/CartContext'
 
@@ -12,6 +10,7 @@ import {
   NavigationContainer,
   NavigationContainerForLargeDevices,
   LogoutButton,
+  ThemeButton,
 } from './styledComponent'
 
 const Header = () => (
@@ -29,12 +28,16 @@ const Header = () => (
         <>
           <NavbarContainer isDarkTheme={isDarkTheme}>
             <NavContent>
-              <ImageElement src={imgUrl} alt="nxtWatch" />
+              <ImageElement src={imgUrl} alt="website logo" />
               <NavigationContainer isDarkTheme={isDarkTheme}>
                 {isDarkTheme ? (
-                  <MdOutlineLightMode size={20} />
+                  <ThemeButton type="button" data-testid="theme">
+                    <MdLightMode size={20} />
+                  </ThemeButton>
                 ) : (
-                  <MdDarkMode size={50} />
+                  <ThemeButton type="button" data-testid="theme">
+                    <FaMoon size={50} />
+                  </ThemeButton>
                 )}
                 <FaBars size={20} />
                 <LogoutButton type="button" onClick={changeTheme}>
@@ -43,9 +46,13 @@ const Header = () => (
               </NavigationContainer>
               <NavigationContainerForLargeDevices isDarkTheme={isDarkTheme}>
                 {isDarkTheme ? (
-                  <MdOutlineLightMode size={20} />
+                  <ThemeButton type="button" data-testid="theme">
+                    <MdLightMode size={20} />
+                  </ThemeButton>
                 ) : (
-                  <MdDarkMode size={50} />
+                  <ThemeButton type="button" data-testid="theme">
+                    <FaMoon size={50} />
+                  </ThemeButton>
                 )}
                 <ImageElement
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"

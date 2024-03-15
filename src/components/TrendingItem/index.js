@@ -10,7 +10,7 @@ import {
   UnorderedList,
   DescriptionWithListType,
   DescriptionWithListTypeNone,
-} from '../VideoItem/styledComponent'
+} from './styledComponent'
 
 const TrendingItem = props => {
   const {videoDetails} = props
@@ -20,7 +20,7 @@ const TrendingItem = props => {
   return (
     <>
       <VideoItemContainer>
-        <ImageElement src={thumbnailUrl} alt="video" />
+        <ImageElement src={thumbnailUrl} alt="video thumbnail" />
         <VideoDetailsContainer>
           <ProfileImage src={profileImageUrl} alt="profile" />
           <ViewsDetails>

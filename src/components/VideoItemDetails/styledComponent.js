@@ -124,6 +124,7 @@ export const RetryButton = styled.button`
 export const LikeButton = styled.button`
   border: none;
   outline: none;
+  color: ${props => (props.Liked ? '#2563eb' : '#64748b')};
 `
 export const ContentAndSideBar = styled.div`
   display: flex;

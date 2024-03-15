@@ -15,7 +15,7 @@ const GamingItem = props => {
         const {isDarkTheme} = value
         return (
           <GamingItemContainer>
-            <ImageElement src={thumbnailUrl} alt={title} />
+            <ImageElement src={thumbnailUrl} alt="video thumbnail" />
             <HeadingItem isDarkTheme={isDarkTheme}>{title}</HeadingItem>
             <Description
               isDarkTheme={isDarkTheme}

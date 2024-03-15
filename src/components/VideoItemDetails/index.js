@@ -110,7 +110,7 @@ class VideoItemDetails extends Component {
         }
         return (
           <FailureContainer isDarkTheme={isDarkTheme}>
-            <ImageElement src={imgUrl} alt="failure" />
+            <ImageElement src={imgUrl} alt="failure view" />
             <HeadingElement>Oops! Something Went Wrong</HeadingElement>
             <Description>
               We are having trouble to complete your request. Please try again
@@ -125,7 +125,7 @@ class VideoItemDetails extends Component {
   )
 
   renderSuccessView = () => {
-    const {videoObject} = this.state
+    const {videoObject,isLiked} = this.state
     const {
       videoUrl,
       title,
@@ -141,6 +141,8 @@ class VideoItemDetails extends Component {
       <ReactPlayer url={videoUrl} controls width height />
     )
 
+    const likedStatus = isLiked===true ? Liked : null
+
     return (
       <CartContext.Consumer>
         {value => {
@@ -155,7 +157,7 @@ class VideoItemDetails extends Component {
             <SuccessContainer>
               <ImageElement
                 src={thumbnailUrl}
-                alt={title}
+                alt="video thumbnail"
                 onClick={onPlayVideo}
               />
               <DetailsContainer>
@@ -166,7 +168,7 @@ class VideoItemDetails extends Component {
                 </UnorderedList>
                 <LikesAndSaveContainer>
                   <LikeContainer>
-                    <LikeButton onClick={changeLikeStatus}>
+                    <LikeButton type="button" onClick={changeLikeStatus} {likedStatus}>
                       <AiOutlineLike size={20} />
                       <Text>Like</Text>
                     </LikeButton>
@@ -214,15 +216,25 @@ class VideoItemDetails extends Component {
 
   render() {
     return (
-      <>
-        <Header />
-        <ContentAndSideBar>
-          <SideBar />
-          <HomeContainer isDarkTheme={isDarkTheme}>
-            {this.renderApiStatus()}
-          </HomeContainer>
-        </ContentAndSideBar>
-      </>
+      <CartContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          return (
+            <>
+              <Header />
+              <ContentAndSideBar>
+                <SideBar />
+                <HomeContainer
+                  isDarkTheme={isDarkTheme}
+                  data-testid="videoItemDetails"
+                >
+                  {this.renderApiStatus()}
+                </HomeContainer>
+              </ContentAndSideBar>
+            </>
+          )
+        }}
+      </CartContext.Consumer>
     )
   }
 }

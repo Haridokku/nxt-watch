@@ -84,7 +84,7 @@ class Gaming extends Component {
         }
         return (
           <FailureContainer isDarkTheme={isDarkTheme}>
-            <ImageElement src={imgUrl} alt="failure" />
+            <ImageElement src={imgUrl} alt="failure view" />
             <HeadingElement>Oops! Something Went Wrong</HeadingElement>
             <Description>
               We are having trouble to complete your request. Please try again
@@ -141,7 +141,7 @@ class Gaming extends Component {
               <Header />
               <ContentAndSideBar>
                 <SideBar />
-                <HomeContainer isDarkTheme={isDarkTheme}>
+                <HomeContainer isDarkTheme={isDarkTheme} data-testid="gaming">
                   {this.renderApiStatus()}
                 </HomeContainer>
               </ContentAndSideBar>

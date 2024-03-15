@@ -12,11 +12,13 @@ import SideBar from '../SideBar'
 import {
   HomeContainer,
   PopupContainer,
+  PopupAndChannelContainer,
   PopupDetails,
   CrossButton,
   ImageElement,
   Description,
   GetButton,
+  ChannelImage,
   LoaderContainer,
   SearchContainer,
   InputElement,
@@ -79,22 +81,32 @@ class Home extends Component {
   }
 
   renderPopupDetails = () => (
-    <PopupContainer>
+    <PopupContainer data-testid="banner">
       <Popup modal open={true}>
         {close => (
-          <PopupDetails>
-            <CrossButton type="button" onClick={() => close()}>
-              <RxCross2 size={20} />
-            </CrossButton>
-            <ImageElement
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-              alt="watch"
+          <PopupAndChannelContainer>
+            <PopupDetails>
+              <CrossButton
+                type="button"
+                onClick={() => close()}
+                data-testid="close"
+              >
+                <RxCross2 size={20} />
+              </CrossButton>
+              <ImageElement
+                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                alt="nxt watch logo"
+              />
+              <Description>
+                Buy Nxt Watch Premium prepaid plan with UPI
+              </Description>
+              <GetButton type="button">GET IT NOW</GetButton>
+            </PopupDetails>
+            <ChannelImage
+              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png"
+              alt="channel logo"
             />
-            <Description>
-              Buy Nxt Watch Premium prepaid plan with UPI
-            </Description>
-            <GetButton>GET IT NOW</GetButton>
-          </PopupDetails>
+          </PopupAndChannelContainer>
         )}
       </Popup>
     </PopupContainer>
@@ -119,7 +131,7 @@ class Home extends Component {
         }
         return (
           <FailureContainer isDarkTheme={isDarkTheme}>
-            <ImageElement src={imgUrl} alt="failure" />
+            <ImageElement src={imgUrl} alt="failure view" />
             <HeadingElement>Oops! Something Went Wrong</HeadingElement>
             <Description>
               We are having trouble to complete your request. Please try again
@@ -202,7 +214,7 @@ class Home extends Component {
                 <SideBar />
                 <ContentAndPopUp>
                   {this.renderPopupDetails()}
-                  <HomeContainer isDarkTheme={isDarkTheme}>
+                  <HomeContainer isDarkTheme={isDarkTheme} data-testid="home">
                     <SearchContainer>
                       <InputElement
                         type="text"
@@ -210,7 +222,7 @@ class Home extends Component {
                         isDarkTheme={isDarkTheme}
                         placeHolder="search"
                       />
-                      <CrossButton type="button">
+                      <CrossButton type="button" data-testid="searchButton">
                         <IoIosSearch size={20} />
                       </CrossButton>
                     </SearchContainer>

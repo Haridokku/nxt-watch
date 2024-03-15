@@ -89,7 +89,7 @@ class Trending extends Component {
         }
         return (
           <FailureContainer isDarkTheme={isDarkTheme}>
-            <ImageElement src={imgUrl} alt="failure" />
+            <ImageElement src={imgUrl} alt="failure view" />
             <HeadingElement>Oops! Something Went Wrong</HeadingElement>
             <Description>
               We are having trouble to complete your request. Please try again
@@ -146,7 +146,7 @@ class Trending extends Component {
               <Header />
               <ContentAndSideBar>
                 <SideBar />
-                <HomeContainer isDarkTheme={isDarkTheme}>
+                <HomeContainer isDarkTheme={isDarkTheme} data-testid="trending">
                   {this.renderApiStatus()}
                 </HomeContainer>
               </ContentAndSideBar>

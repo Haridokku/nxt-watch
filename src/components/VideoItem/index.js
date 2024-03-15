@@ -20,7 +20,7 @@ const VideoItem = props => {
   const formatTime = formatDistanceToNow(new Date(publishedAt))
   return (
     <ListItemDetails>
-      <ImageElement src={thumbnailUrl} alt={title} />
+      <ImageElement src={thumbnailUrl} alt="video thumbnail" />
       <ContentDetails>
         <ProfileImage src={profileImageUrl} alt={name} />
         <VideoDescription>

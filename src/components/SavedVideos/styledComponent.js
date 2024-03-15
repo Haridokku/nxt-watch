@@ -5,7 +5,7 @@ export const SavedListContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${props => (props.isDarkTheme ? '#1e293b' : '#f1f1f1')};
+  background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
 `
 export const TrendingContainer = styled.div`
   height: 100px;

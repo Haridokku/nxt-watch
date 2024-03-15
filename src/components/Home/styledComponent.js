@@ -5,14 +5,22 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${props => (props.isDarkTheme ? '#1e293b' : '#f9f9f9')};
+  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9')};
 `
 export const PopupContainer = styled.div`
   background-color: #ffffff;
   padding: 20px;
-  @media screen and (min-width: 576px) {
-    background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
-    background-size: cover;
+`
+export const PopupAndChannelContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`
+export const ChannelImage = styled.img`
+  width: 100px;
+  height: 100px;
+  @media screen and (max-width: 575px) {
+    display: none;
   }
 `
 export const PopupDetails = styled.div`

@@ -48,3 +48,8 @@ export const LogoutButton = styled.button`
     border: none;
   }
 `
+export const ThemeButton = styled.button`
+  outline: none;
+  cursor: pointer;
+  border: none;
+`

@@ -25,7 +25,10 @@ const SavedVideos = () => (
           <Header />
           <ContentAndSideBar>
             <SideBar />
-            <SavedListContainer isDarkTheme={isDarkTheme}>
+            <SavedListContainer
+              isDarkTheme={isDarkTheme}
+              data-testid="savedVideos"
+            >
               {savedList.length === 0 ? (
                 <>
                   <ImageElement

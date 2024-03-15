@@ -23,7 +23,7 @@ const NotFound = () => (
           <ContentAndSideBar>
             <SideBar />
             <NotFoundContainer isDarkTheme={isDarkTheme}>
-              <ImageElement src={imgUrl} alt="not-found" />
+              <ImageElement src={imgUrl} alt="not found" />
               <HeadingElement isDarkTheme={isDarkTheme}>
                 Page not found
               </HeadingElement>
