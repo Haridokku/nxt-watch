@@ -125,7 +125,7 @@ class VideoItemDetails extends Component {
   )
 
   renderSuccessView = () => {
-    const {videoObject,isLiked} = this.state
+    const {videoObject, isLiked} = this.state
     const {
       videoUrl,
       title,
@@ -140,8 +140,6 @@ class VideoItemDetails extends Component {
     const onPlayVideo = () => (
       <ReactPlayer url={videoUrl} controls width height />
     )
-
-    const likedStatus = isLiked===true ? Liked : null
 
     return (
       <CartContext.Consumer>
@@ -168,7 +166,11 @@ class VideoItemDetails extends Component {
                 </UnorderedList>
                 <LikesAndSaveContainer>
                   <LikeContainer>
-                    <LikeButton type="button" onClick={changeLikeStatus} {likedStatus}>
+                    <LikeButton
+                      type="button"
+                      onClick={changeLikeStatus}
+                      isLiked={isLiked}
+                    >
                       <AiOutlineLike size={20} />
                       <Text>Like</Text>
                     </LikeButton>
