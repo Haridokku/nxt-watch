@@ -1,4 +1,4 @@
-import {MdLightMode} from 'react-icons/md'
+import {MdOutlineLightMode} from 'react-icons/md'
 import {FaBars, FaMoon} from 'react-icons/fa'
 import {FiLogOut} from 'react-icons/fi'
 import CartContext from '../../context/CartContext'
@@ -32,7 +32,7 @@ const Header = () => (
               <NavigationContainer isDarkTheme={isDarkTheme}>
                 {isDarkTheme ? (
                   <ThemeButton type="button" data-testid="theme">
-                    <MdLightMode size={20} />
+                    <MdOutlineLightMode size={20} />
                   </ThemeButton>
                 ) : (
                   <ThemeButton type="button" data-testid="theme">
@@ -47,7 +47,7 @@ const Header = () => (
               <NavigationContainerForLargeDevices isDarkTheme={isDarkTheme}>
                 {isDarkTheme ? (
                   <ThemeButton type="button" data-testid="theme">
-                    <MdLightMode size={20} />
+                    <MdOutlineLightMode size={20} />
                   </ThemeButton>
                 ) : (
                   <ThemeButton type="button" data-testid="theme">

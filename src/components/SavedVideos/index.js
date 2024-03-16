@@ -1,4 +1,4 @@
-import {HiMiniFire} from 'react-icons/hi2'
+import {AiFillFire} from 'react-icons/ai'
 import CartContext from '../../context/CartContext'
 import Header from '../Header'
 import TrendingItem from '../TrendingItem'
@@ -46,7 +46,7 @@ const SavedVideos = () => (
                 <>
                   <TrendingContainer isDarkTheme={isDarkTheme}>
                     <ImageContainer isDarkTheme={isDarkTheme}>
-                      <HiMiniFire size={20} />
+                      <AiFillFire size={20} />
                     </ImageContainer>
                     <HeadingElement>Saved Videos</HeadingElement>
                   </TrendingContainer>

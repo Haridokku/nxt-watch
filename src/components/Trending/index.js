@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import {HiMiniFire} from 'react-icons/hi2'
+import {AiFillFire} from 'react-icons/ai'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import Header from '../Header'
@@ -109,7 +109,7 @@ class Trending extends Component {
       <>
         <TrendingContainer>
           <ImageContainer>
-            <HiMiniFire size={20} />
+            <AiFillFire size={20} />
           </ImageContainer>
           <HeadingElement>Trending</HeadingElement>
         </TrendingContainer>
