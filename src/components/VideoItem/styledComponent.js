@@ -7,7 +7,7 @@ export const ListItemDetails = styled.div`
   justify-content: center;
   align-items: center;
 `
-export const ImageElement = styled.Img`
+export const ImageElement = styled.img`
   width: 100%;
   height: 200px;
 `

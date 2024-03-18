@@ -12,6 +12,7 @@ import {
   CheckboxInput,
   ButtonElement,
   Description,
+  CheckboxContainer,
 } from './styledComponent'
 
 class Login extends Component {
@@ -45,12 +46,14 @@ class Login extends Component {
     this.setState({errorMsg, isSubmitError: true})
   }
 
-  renderApiCall = async event => {
-    const {username, password} = this.state
+  submitForm = async event => {
     event.preventDefault()
+    const {username, password} = this.state
     const userDetails = {username, password}
+    console.log(userDetails)
     const options = {
-      body: JSON.Stringify(userDetails),
+      method: 'POST',
+      body: JSON.stringify(userDetails),
     }
     const response = await fetch('https://apis.ccbp.in/login', options)
     const data = await response.json()
@@ -63,7 +66,7 @@ class Login extends Component {
 
   render() {
     const {username, password, isChecked, errorMsg, isSubmitError} = this.state
-    const value = isChecked ? 'text' : 'password'
+
     const jwtToken = Cookies.get('jwt_token')
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
@@ -71,8 +74,11 @@ class Login extends Component {
     return (
       <AppContainer>
         <ContentContainer>
-          <ImageElement />
-          <FormContainer onSubmit={this.renderApiCall}>
+          <ImageElement
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+            alt="website logo"
+          />
+          <FormContainer onSubmit={this.submitForm}>
             <LabelAndInputContainer>
               <LabelElement htmlFor="username">USERNAME</LabelElement>
               <InputElement
@@ -89,18 +95,21 @@ class Login extends Component {
               </LabelElement>
               <InputElement
                 id="password"
-                type={value}
+                type="password"
                 placeholder="Password"
                 value={password}
+                onChange={this.onChangePassword}
               />
             </LabelAndInputContainer>
-            <CheckboxInput
-              id="checkbox1"
-              type="checkbox"
-              checked={isChecked}
-              onClick={this.changeCheckboxStatus}
-            />
-            <LabelElement htmlFor="checkbox">Show Password</LabelElement>
+            <CheckboxContainer>
+              <CheckboxInput
+                id="checkbox1"
+                type="checkbox"
+                checked={isChecked}
+                onClick={this.changeCheckboxStatus}
+              />
+              <LabelElement htmlFor="checkbox">Show Password</LabelElement>
+            </CheckboxContainer>
             <ButtonElement type="submit">Login</ButtonElement>
             {isSubmitError && <Description>{`*${errorMsg}`}</Description>}
           </FormContainer>

@@ -10,7 +10,7 @@ export const VideoItemContainer = styled.div`
     flex-direction: row;
   }
 `
-export const ImageElement = styled.Img`
+export const ImageElement = styled.img`
   width: 100%;
   height: 200px;
 `

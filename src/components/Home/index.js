@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import Popup from 'reactjs-popup'
-import {RxCross2} from 'react-icons/rx'
+
+import {BsX} from 'react-icons/bs'
 import {IoIosSearch} from 'react-icons/io'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
@@ -82,7 +83,7 @@ class Home extends Component {
 
   renderPopupDetails = () => (
     <PopupContainer data-testid="banner">
-      <Popup modal open={true}>
+      <Popup modal open>
         {close => (
           <PopupAndChannelContainer>
             <PopupDetails>
@@ -91,7 +92,7 @@ class Home extends Component {
                 onClick={() => close()}
                 data-testid="close"
               >
-                <RxCross2 size={20} />
+                <BsX size={20} />
               </CrossButton>
               <ImageElement
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"

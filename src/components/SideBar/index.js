@@ -1,10 +1,11 @@
 import {Link} from 'react-router-dom'
 import Popup from 'reactjs-popup'
 import {MdHome} from 'react-icons/md'
-import {FiLogOut} from 'react-icons/fi'
+// eslint-disable-next-line no-unused-vars
+import {FiLogOut, FiSave} from 'react-icons/fi'
 import {HiFire} from 'react-icons/hi'
 import {SiYoutubegaming} from 'react-icons/si'
-import {FiSave} from 'react-icons/fi'
+
 import CartContext from '../../context/CartContext'
 
 import {
@@ -29,12 +30,12 @@ const SideBar = () => (
         <>
           <PopupAndContactDetails>
             <PopupContainer isDarkTheme={isDarkTheme}>
-              <Popup modal open={true}>
+              <Popup modal open>
                 {close => (
                   <>
                     <PopupElement>
                       <ButtonElement onClick={() => close()}>
-                        <FilLogOut size={20} />
+                        <FiLogOut size={20} />
                       </ButtonElement>
                       <UnorderedList>
                         <ListItem>

@@ -10,15 +10,14 @@ export const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 `
 export const ImageElement = styled.img`
-  width: 300px;
-  height: 150px;
+  width: 200px;
+  height: 100px;
   margin-bottom: 10px;
   @media screen and (min-width: 768px) {
-    width: 400px;
-    height: 200px;
+    width: 300px;
+    height: 150px;
     margin-bottom: 20px;
   }
 `
@@ -28,6 +27,7 @@ export const FormContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 80%;
+  margin: 20px;
 `
 export const LabelElement = styled.label`
   font-size: 15px;
@@ -67,4 +67,8 @@ export const Description = styled.p`
   color: #ff0b37;
   font-size: 20px;
   font-family: 'Roboto';
+`
+export const CheckboxContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
 `
