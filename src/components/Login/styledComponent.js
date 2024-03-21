@@ -21,7 +21,7 @@ export const ImageElement = styled.img`
     margin-bottom: 20px;
   }
 `
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;

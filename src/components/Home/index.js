@@ -51,8 +51,10 @@ class Home extends Component {
 
   renderApiCall = async () => {
     this.setState({apiStatus: apiStatusConstants.in_progress})
-    const url = 'https://apis.ccbp.in/videos/all?search='
+    const {searchValue} = this.state
+    const url = `https://apis.ccbp.in/videos/all?search=${searchValue}`
     const jwtToken = Cookies.get('jwt_token')
+    console.log(jwtToken)
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -60,8 +62,9 @@ class Home extends Component {
       method: 'GET',
     }
     const response = await fetch(url, options)
-    const data = await response.json()
+
     if (response.ok === true) {
+      const data = await response.json()
       const updatedData = data.videos.map(each => ({
         id: each.id,
         title: each.title,
@@ -73,6 +76,7 @@ class Home extends Component {
         viewCount: each.view_count,
         publishedAt: each.published_at,
       }))
+      console.log(updatedData)
       this.setState({
         videosList: updatedData,
         apiStatus: apiStatusConstants.success,
@@ -202,6 +206,10 @@ class Home extends Component {
     }
   }
 
+  onChangeInputValue = event => {
+    this.setState({searchValue: event.target.value}, this.renderApiCall)
+  }
+
   render() {
     const {searchValue} = this.state
     return (
@@ -222,6 +230,7 @@ class Home extends Component {
                         value={searchValue}
                         isDarkTheme={isDarkTheme}
                         placeHolder="search"
+                        onChange={this.onChangeInputValue}
                       />
                       <CrossButton type="button" data-testid="searchButton">
                         <IoIosSearch size={20} />

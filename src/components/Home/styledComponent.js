@@ -97,10 +97,10 @@ export const UnorderedList = styled.ul`
 `
 export const ContentAndSideBar = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `
 export const ContentAndPopUp = styled.div`
   display: flex;
   flex-direction: column;
+  width: 60%;
 `

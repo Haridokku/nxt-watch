@@ -1,6 +1,9 @@
 import {BsBrightnessHighFill} from 'react-icons/bs'
 import {FaBars, FaMoon} from 'react-icons/fa'
 import {FiLogOut} from 'react-icons/fi'
+import Popup from 'reactjs-popup'
+import {withRouter} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import CartContext from '../../context/CartContext'
 
 import {
@@ -11,9 +14,17 @@ import {
   NavigationContainerForLargeDevices,
   LogoutButton,
   ThemeButton,
+  PopupContainer,
+  PopupElement,
+  Heading,
+  ButtonsContainer,
+  CancelBtn,
+  ConfirmBtn,
+  LogoutButtonIcon,
+  ProfileImg,
 } from './styledComponent'
 
-const Header = () => (
+const Header = props => (
   <CartContext.Consumer>
     {value => {
       const {isDarkTheme, onChangeTheme} = value
@@ -24,6 +35,28 @@ const Header = () => (
         onChangeTheme()
       }
 
+      const onLogoutFromWebsite = () => {
+        const {history} = props
+        Cookies.remove('jwt_token')
+        history.replace('/login')
+      }
+
+      const onLogout = logBtn => (
+        <PopupContainer>
+          <Popup modal trigger={logBtn}>
+            {close => (
+              <PopupElement>
+                <Heading>Are you sure you want to logout?</Heading>
+                <ButtonsContainer>
+                  <CancelBtn onClick={() => close()}>Cancel</CancelBtn>
+                  <ConfirmBtn onClick={onLogoutFromWebsite}>Confirm</ConfirmBtn>
+                </ButtonsContainer>
+              </PopupElement>
+            )}
+          </Popup>
+        </PopupContainer>
+      )
+
       return (
         <>
           <NavbarContainer isDarkTheme={isDarkTheme}>
@@ -31,40 +64,58 @@ const Header = () => (
               <ImageElement src={imgUrl} alt="website logo" />
               <NavigationContainer isDarkTheme={isDarkTheme}>
                 {isDarkTheme ? (
-                  <ThemeButton type="button" data-testid="theme">
-                    <BsBrightnessHighFill size={20} />
+                  <ThemeButton
+                    type="button"
+                    data-testid="theme"
+                    onClick={changeTheme}
+                  >
+                    <BsBrightnessHighFill size={30} />
                   </ThemeButton>
                 ) : (
-                  <ThemeButton type="button" data-testid="theme">
-                    <FaMoon size={50} />
+                  <ThemeButton
+                    type="button"
+                    data-testid="theme"
+                    onClick={changeTheme}
+                  >
+                    <FaMoon size={30} />
                   </ThemeButton>
                 )}
-                <FaBars size={20} />
-                <LogoutButton type="button" onClick={changeTheme}>
-                  <FiLogOut size={20} />
-                </LogoutButton>
+                <FaBars size={40} color="#4f46e5" />
+
+                {onLogout(
+                  <LogoutButtonIcon type="button" onClick={onLogout}>
+                    <FiLogOut size={30} />
+                  </LogoutButtonIcon>,
+                )}
               </NavigationContainer>
               <NavigationContainerForLargeDevices isDarkTheme={isDarkTheme}>
                 {isDarkTheme ? (
-                  <ThemeButton type="button" data-testid="theme">
+                  <ThemeButton
+                    type="button"
+                    data-testid="theme"
+                    onClick={changeTheme}
+                  >
                     <BsBrightnessHighFill size={20} />
                   </ThemeButton>
                 ) : (
-                  <ThemeButton type="button" data-testid="theme">
+                  <ThemeButton
+                    type="button"
+                    data-testid="theme"
+                    onClick={changeTheme}
+                  >
                     <FaMoon size={50} />
                   </ThemeButton>
                 )}
-                <ImageElement
+                <ProfileImg
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
                   alt="profile"
                 />
-                <LogoutButton
-                  type="button"
-                  isDarkTheme={isDarkTheme}
-                  onClick={changeTheme}
-                >
-                  Logout
-                </LogoutButton>
+
+                {onLogout(
+                  <LogoutButton type="button" isDarkTheme={isDarkTheme}>
+                    Logout
+                  </LogoutButton>,
+                )}
               </NavigationContainerForLargeDevices>
             </NavContent>
           </NavbarContainer>
@@ -74,4 +125,4 @@ const Header = () => (
   </CartContext.Consumer>
 )
 
-export default Header
+export default withRouter(Header)
