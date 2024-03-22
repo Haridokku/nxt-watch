@@ -62,9 +62,9 @@ class Home extends Component {
       method: 'GET',
     }
     const response = await fetch(url, options)
-
+    const data = await response.json()
     if (response.ok === true) {
-      const data = await response.json()
+      
       const updatedData = data.videos.map(each => ({
         id: each.id,
         title: each.title,
