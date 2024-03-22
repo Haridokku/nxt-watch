@@ -51,10 +51,10 @@ class VideoItemDetails extends Component {
     this.renderVideoDetails()
   }
 
-  renderVideoDetails = async props => {
+  renderVideoDetails = async () => {
     this.setState({apiStatus: apiStatusConstants.in_progress})
     const jwtToken = Cookies.get('jwt_token')
-    const {match} = props
+    const {match} = this.props
     const {params} = match
     const {id} = params
     const url = `https://apis.ccbp.in/videos/${id}`

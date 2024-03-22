@@ -28,7 +28,7 @@ const NotFound = () => (
                 Page not found
               </HeadingElement>
               <Description>
-                We are sorry, the page you requested could not found
+                we are sorry, the page you requested could not be found.
               </Description>
             </NotFoundContainer>
           </ContentAndSideBar>

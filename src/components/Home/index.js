@@ -140,7 +140,8 @@ class Home extends Component {
             <ImageElement src={imgUrl} alt="failure view" />
             <HeadingElement>Oops! Something Went Wrong</HeadingElement>
             <Description>
-              We are having trouble to complete your request. Please try again
+              We are having some trouble to complete your request. Please try
+              again
             </Description>
             <RetryButton type="button" onClick={onRetryApi}>
               Retry

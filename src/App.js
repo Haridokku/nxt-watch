@@ -47,8 +47,8 @@ class App extends Component {
             path="/videos/:id"
             component={VideoItemDetails}
           />
+          <Route exact path="/not-found" component={NotFound} />
           <Redirect to="/not-found" />
-          <Route path="/not-found" component={NotFound} />
         </Switch>
       </CartContext.Provider>
     )

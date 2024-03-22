@@ -29,6 +29,5 @@ export const Description = styled.p`
 `
 export const ContentAndSideBar = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `
