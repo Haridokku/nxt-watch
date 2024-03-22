@@ -71,7 +71,7 @@ export const InputElement = styled.input`
   padding: 15px;
   width: 80%;
 `
-export const FailureContainer = styled.div`
+export const FailureContainerHome = styled.div`
 display:flex;
 flex-direction:column:
 justify-content:center;

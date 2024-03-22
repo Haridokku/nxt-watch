@@ -23,7 +23,7 @@ import {
   LoaderContainer,
   SearchContainer,
   InputElement,
-  FailureContainer,
+  FailureContainerHome,
   HeadingElement,
   RetryButton,
   UnorderedList,
@@ -136,7 +136,7 @@ class Home extends Component {
           this.renderApiCall()
         }
         return (
-          <FailureContainer isDarkTheme={isDarkTheme}>
+          <FailureContainerHome isDarkTheme={isDarkTheme}>
             <ImageElement src={imgUrl} alt="failure view" />
             <HeadingElement>Oops! Something Went Wrong</HeadingElement>
             <Description>
@@ -146,7 +146,7 @@ class Home extends Component {
             <RetryButton type="button" onClick={onRetryApi}>
               Retry
             </RetryButton>
-          </FailureContainer>
+          </FailureContainerHome>
         )
       }}
     </CartContext.Consumer>
@@ -160,7 +160,7 @@ class Home extends Component {
           this.renderApiCall()
         }
         return (
-          <FailureContainer>
+          <FailureContainerHome>
             <ImageElement
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
               alt="no videos"
@@ -174,7 +174,7 @@ class Home extends Component {
             <RetryButton type="button" onClick={onRetryApi}>
               Retry
             </RetryButton>
-          </FailureContainer>
+          </FailureContainerHome>
         )
       }}
     </CartContext.Consumer>
