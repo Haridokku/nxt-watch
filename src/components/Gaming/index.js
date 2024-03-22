@@ -61,8 +61,9 @@ class Gaming extends Component {
         videosList: updatedData,
         apiStatus: apiStatusConstants.success,
       })
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
     }
-    this.setState({apiStatus: apiStatusConstants.failure})
   }
 
   renderInprogressView = () => (

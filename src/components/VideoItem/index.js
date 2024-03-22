@@ -14,8 +14,8 @@ import {
 } from './styledComponent'
 
 const VideoItem = props => {
-  const {eachDetails} = props
-  const {title, thumbnailUrl, channel, viewCount, publishedAt} = eachDetails
+  const {details} = props
+  const {title, thumbnailUrl, channel, viewCount, publishedAt} = details
   const {profileImageUrl, name} = channel
   const formatTime = formatDistanceToNow(new Date(publishedAt))
   return (

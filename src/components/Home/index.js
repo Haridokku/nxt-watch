@@ -81,8 +81,9 @@ class Home extends Component {
         videosList: updatedData,
         apiStatus: apiStatusConstants.success,
       })
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
     }
-    this.setState({apiStatus: apiStatusConstants.failure})
   }
 
   renderPopupDetails = () => (
@@ -186,7 +187,7 @@ class Home extends Component {
     return (
       <UnorderedList>
         {videosList.map(each => (
-          <VideoItem key={each.id} videoDetails={each} />
+          <VideoItem key={each.id} details={each} />
         ))}
       </UnorderedList>
     )
@@ -194,6 +195,7 @@ class Home extends Component {
 
   renderApiStatus = () => {
     const {apiStatus} = this.state
+    console.log(apiStatus)
     switch (apiStatus) {
       case apiStatusConstants.in_progress:
         return this.renderInprogressView()
