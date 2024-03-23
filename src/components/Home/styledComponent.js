@@ -73,7 +73,7 @@ export const InputElement = styled.input`
 `
 export const FailureContainerHome = styled.div`
 display:flex;
-flex-direction:column:
+flex-direction:column;
 justify-content:center;
 align-items:center;
 `
