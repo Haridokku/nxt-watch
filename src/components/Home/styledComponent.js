@@ -72,10 +72,10 @@ export const InputElement = styled.input`
   width: 80%;
 `
 export const FailureContainerHome = styled.div`
-display:flex;
-flex-direction:column:
-justify-content:center;
-align-items:center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 export const HeadingElement = styled.h1`
 color:${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')}
