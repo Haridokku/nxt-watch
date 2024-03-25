@@ -90,11 +90,18 @@ export const InputElement = styled.input`
   width: 300px;
 `
 export const FailureContainerHome = styled.div`
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 70vh;
+=======
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+>>>>>>> 0b4505c1dcd9a4f55783ccd3668167ee74ab91cf
 `
 export const HeadingElement = styled.h1`
 color:${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')}
