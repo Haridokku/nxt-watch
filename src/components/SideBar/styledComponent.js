@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const PopupAndContactDetails = styled.div`
-  width: 30%;
+  width: 25%;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,12 +11,12 @@ export const PopupAndContactDetails = styled.div`
   @media screen and (max-width: 767px) {
     display: none;
   }
-  height: 80vh;
+  height: 100vh;
+  padding: 10px;
 `
-export const PopupContainerElement = styled.div`
-  width: 30%;
-  align-self: flex-start;
+export const HeaderDetails = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 `

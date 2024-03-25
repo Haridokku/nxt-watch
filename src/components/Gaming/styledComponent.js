@@ -6,6 +6,7 @@ export const HomeContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
+  overflow-y: auto;
 `
 export const PopupContainer = styled.div`
   background-color: #ffffff;

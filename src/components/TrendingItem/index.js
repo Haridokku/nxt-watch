@@ -1,8 +1,10 @@
+import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 
 import {
   VideoItemContainer,
   ProfileImage,
+  HeadingElement,
   ImageElement,
   VideoDetailsContainer,
   ViewsDetails,
@@ -14,24 +16,35 @@ import {
 
 const TrendingItem = props => {
   const {videoDetails} = props
-  const {thumbnailUrl, channel, title, viewCount, publishedAt} = videoDetails
+  const {
+    id,
+    thumbnailUrl,
+    channel,
+    title,
+    viewCount,
+    publishedAt,
+  } = videoDetails
   const {profileImageUrl, name} = channel
   const formatTime = formatDistanceToNow(new Date(publishedAt))
   return (
     <>
       <VideoItemContainer>
-        <ImageElement src={thumbnailUrl} alt="video thumbnail" />
-        <VideoDetailsContainer>
-          <ProfileImage src={profileImageUrl} alt="profile" />
-          <ViewsDetails>
-            <Description>{title}</Description>
-            <UnorderedList>
-              <DescriptionWithListTypeNone>{name}</DescriptionWithListTypeNone>
-              <DescriptionWithListType>{viewCount}</DescriptionWithListType>
-              <Description>{formatTime}</Description>
-            </UnorderedList>
-          </ViewsDetails>
-        </VideoDetailsContainer>
+        <Link to={`/videos/${id}`}>
+          <ImageElement src={thumbnailUrl} alt="video thumbnail" />
+          <VideoDetailsContainer>
+            <ProfileImage src={profileImageUrl} alt="profile" />
+            <ViewsDetails>
+              <HeadingElement>{title}</HeadingElement>
+              <UnorderedList>
+                <DescriptionWithListTypeNone>
+                  {name}
+                </DescriptionWithListTypeNone>
+                <DescriptionWithListType>{viewCount}</DescriptionWithListType>
+                <Description>{formatTime}</Description>
+              </UnorderedList>
+            </ViewsDetails>
+          </VideoDetailsContainer>
+        </Link>
       </VideoItemContainer>
     </>
   )

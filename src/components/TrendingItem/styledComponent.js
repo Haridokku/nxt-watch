@@ -9,9 +9,10 @@ export const VideoItemContainer = styled.div`
   @media screen and (min-width: 576px) {
     flex-direction: row;
   }
+  margin: 10px;
 `
 export const ImageElement = styled.img`
-  width: 100%;
+  width: 400px;
   height: 200px;
 `
 export const ContentDetails = styled.div`
@@ -41,6 +42,8 @@ export const HeadingElement = styled.h1`
   font-size: 20px;
   font-weight: bold;
   font-family: 'Roboto';
+  padding: 15px;
+  text-decoration: none;
 `
 export const VideoDetailsContainer = styled.div`
   display: flex;
@@ -52,14 +55,15 @@ export const Description = styled.li`
   font-size: 15px;
   font-weight: 300;
   font-family: 'Roboto';
+  text-decoration: none;
 `
 export const ViewsDetails = styled.div`
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 `
 export const UnorderedList = styled.ul`
-  list-style-type: circle;
+  list-style-type: disc;
 `
 export const DescriptionWithListType = styled(Description)`
   list-style-type: circle;

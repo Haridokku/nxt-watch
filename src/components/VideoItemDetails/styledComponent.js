@@ -6,19 +6,35 @@ export const SuccessContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${props => (props.isDarkTheme ? '#1e293b' : '#f9f9f9')};
+  padding: 20px;
+`
+export const PlayBtn = styled.button`
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
 `
 export const ImageElement = styled.img`
-  width: 200px;
+  align-self: flex-start;
+  width: 100%;
   height: 200px;
   @media screen and (min-width: 768px) {
-    width: 200px;
-    height: 200px;
+    width: 90%;
+    height: 350px;
   }
+`
+export const ListAndLikesContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  align-self: flex-start;
 `
 export const UnorderedList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   padding-left: 0px;
+  align-self: flex-start;
 `
 export const Description = styled.li`
   font-size: 18px;
@@ -40,6 +56,7 @@ export const HeadingElement = styled.h1`
 color:${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')}
 font-weight:600;
 font-size:25px;
+align-self:flex-start;
 `
 export const Heading2 = styled(HeadingElement)`
   font-weight: 400;
@@ -49,16 +66,21 @@ export const LikesAndSaveContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 30%;
 `
 export const LikeContainer = styled.div`
   display: flex;
   align-items: center;
 `
-export const Text = styled.p`
-  margin-left: 10px;
-  color: #616e7c;
+export const Text = styled.span`
+  margin-left: 3px;
+  color: ${props => (props.isLiked ? '#2563eb' : '#64748b')};
   font-size: 18px;
   font-family: 'Roboto';
+  margin-bottom: 3px;
+`
+export const TextDisLike = styled(Text)`
+  color: ${props => (props.isLiked ? '#64748b' : '#2563eb')};
 `
 export const HorizontalLine = styled.hr`
   width: 100%;
@@ -70,14 +92,15 @@ export const ProfileContainer = styled.div`
   align-items: center;
 `
 export const ProfileImage = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 80px;
+  height: 80px;
   margin-right: 10px;
+  align-self: flex-start;
 `
 export const ProfileDetails = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 `
 export const DescriptionDetails = styled.p`
   font-size: 18px;
@@ -125,6 +148,27 @@ export const LikeButton = styled.button`
   border: none;
   outline: none;
   color: ${props => (props.isLiked ? '#2563eb' : '#64748b')};
+  background-color: transparent;
+  margin-right: 10px;
+  cursor: pointer;
+  width: 100px;
+`
+export const DisLikeButton = styled(LikeButton)`
+  color: #64748b;
+  border: none;
+  outline: none;
+  color: ${props => (props.isLiked ? '#64748b' : '#2563eb')};
+  background-color: transparent;
+  margin-right: 10px;
+  cursor: pointer;
+`
+export const SaveBtn = styled.button`
+  color: ${props => (props.isLiked ? '#2563eb' : '#64748b')};
+  background-color: transparent;
+  margin-right: 10px;
+  cursor: pointer;
+  width: 100px;
+  border: none;
 `
 export const ContentAndSideBar = styled.div`
   display: flex;

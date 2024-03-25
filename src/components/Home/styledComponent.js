@@ -1,20 +1,34 @@
 import styled from 'styled-components'
 
+export const ContentAndSideBar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`
+export const ContentAndPopUp = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-y: scroll;
+`
+
 export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
   background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9')};
+  overflow-y: scroll;
 `
 export const PopupContainer = styled.div`
   background-color: #ffffff;
   padding: 20px;
+  height: 100px;
+  width: 100%;
 `
 export const PopupAndChannelContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  width: 100%;
 `
 export const ChannelImage = styled.img`
   width: 100px;
@@ -26,14 +40,16 @@ export const ChannelImage = styled.img`
 export const PopupDetails = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  width: 100%;
 `
 export const CrossButton = styled.button`
   outline: none;
   cursor: pointer;
-  background: transparent;
+  background: #e2e8f0;
   border: none;
   align-self: flex-end;
+  height: 100%;
 `
 export const ImageElement = styled.img`
   width: 100px;
@@ -63,19 +79,22 @@ export const LoaderContainer = styled.div`
 export const SearchContainer = styled.div`
   border: 2px solid #94a3b8;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  align-self: flex-start;
 `
 export const InputElement = styled.input`
   background-color: ${props => (props.isDarkTheme ? '#1e293b' : '#f9f9f9')};
   padding: 15px;
-  width: 80%;
+  color: #94a3b8;
+  border: none;
+  width: 300px;
 `
 export const FailureContainerHome = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 70vh;
 `
 export const HeadingElement = styled.h1`
 color:${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')}
@@ -94,13 +113,4 @@ export const UnorderedList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   padding-left: 0px;
-`
-export const ContentAndSideBar = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-export const ContentAndPopUp = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 60%;
 `

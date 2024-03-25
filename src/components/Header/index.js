@@ -2,7 +2,7 @@ import {BsBrightnessHighFill} from 'react-icons/bs'
 import {FaBars, FaMoon} from 'react-icons/fa'
 import {FiLogOut} from 'react-icons/fi'
 import Popup from 'reactjs-popup'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import CartContext from '../../context/CartContext'
 
@@ -61,7 +61,9 @@ const Header = props => (
         <>
           <NavbarContainer isDarkTheme={isDarkTheme}>
             <NavContent>
-              <ImageElement src={imgUrl} alt="website logo" />
+              <Link to="/">
+                <ImageElement src={imgUrl} alt="website logo" />
+              </Link>
               <NavigationContainer isDarkTheme={isDarkTheme}>
                 {isDarkTheme ? (
                   <ThemeButton

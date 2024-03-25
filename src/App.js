@@ -11,7 +11,6 @@ import SavedVideos from './components/SavedVideos'
 import VideoItemDetails from './components/VideoItemDetails'
 import './App.css'
 
-// Replace your code here
 class App extends Component {
   state = {isDarkTheme: false, savedList: []}
 

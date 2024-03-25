@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import CartContext from '../../context/CartContext'
 import {
   GamingItemContainer,
@@ -8,22 +9,24 @@ import {
 
 const GamingItem = props => {
   const {videoDetails} = props
-  const {title, thumbnailUrl, viewCount} = videoDetails
+  const {id, title, thumbnailUrl, viewCount} = videoDetails
   return (
-    <CartContext.Consumer>
-      {value => {
-        const {isDarkTheme} = value
-        return (
-          <GamingItemContainer>
-            <ImageElement src={thumbnailUrl} alt="video thumbnail" />
-            <HeadingItem isDarkTheme={isDarkTheme}>{title}</HeadingItem>
-            <Description
-              isDarkTheme={isDarkTheme}
-            >{`${viewCount} Watching Worldwide`}</Description>
-          </GamingItemContainer>
-        )
-      }}
-    </CartContext.Consumer>
+    <Link to={`/videos/${id}`}>
+      <CartContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          return (
+            <GamingItemContainer>
+              <ImageElement src={thumbnailUrl} alt="video thumbnail" />
+              <HeadingItem isDarkTheme={isDarkTheme}>{title}</HeadingItem>
+              <Description
+                isDarkTheme={isDarkTheme}
+              >{`${viewCount} Watching Worldwide`}</Description>
+            </GamingItemContainer>
+          )
+        }}
+      </CartContext.Consumer>
+    </Link>
   )
 }
 

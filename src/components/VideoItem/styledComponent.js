@@ -6,6 +6,8 @@ export const ListItemDetails = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 280px;
+  margin: 10px;
 `
 export const ImageElement = styled.img`
   width: 100%;

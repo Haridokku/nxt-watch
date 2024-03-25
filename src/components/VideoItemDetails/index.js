@@ -21,17 +21,21 @@ import {
   SuccessContainer,
   DetailsContainer,
   Heading2,
+  ListAndLikesContainer,
   LikesAndSaveContainer,
   LikeContainer,
   Text,
+  TextDisLike,
   HorizontalLine,
   ProfileContainer,
   ProfileImage,
   ProfileDetails,
   DescriptionDetails,
   LikeButton,
+  DisLikeButton,
   ContentAndSideBar,
   HomeContainer,
+  SaveBtn,
 } from './styledComponent'
 
 const apiStatusConstants = {
@@ -45,6 +49,7 @@ class VideoItemDetails extends Component {
     videoObject: {},
     apiStatus: apiStatusConstants.initial,
     isLiked: false,
+    isSaved: false,
   }
 
   componentDidMount() {
@@ -66,6 +71,7 @@ class VideoItemDetails extends Component {
     }
     const response = await fetch(url, options)
     const data = await response.json()
+    console.log(data)
     if (response.ok === true) {
       const responseObject = data.video_details
       const updatedObject = {
@@ -129,7 +135,6 @@ class VideoItemDetails extends Component {
     const {
       videoUrl,
       title,
-      thumbnailUrl,
       channel,
       viewCount,
       publishedAt,
@@ -137,53 +142,67 @@ class VideoItemDetails extends Component {
     } = videoObject
     const {name, profileImageUrl, subscriberCount} = channel
     const formattedTime = formatDistanceToNow(new Date(publishedAt))
-    const onPlayVideo = () => (
-      <ReactPlayer url={videoUrl} controls width height />
-    )
 
     return (
       <CartContext.Consumer>
         {value => {
-          const {moveToSaveList} = value
+          const {moveToSaveList, isDarkTheme} = value
           const changeToSaveList = () => {
+            this.setState(prevState => ({isSaved: !prevState.isSaved}))
             moveToSaveList(videoObject)
           }
           const changeLikeStatus = () => {
             this.setState(prevState => ({isLiked: !prevState.isLiked}))
           }
+          const changeDislike = () => {
+            this.setState(prevState => ({
+              isDislike: !prevState.isDislike,
+              isLiked: !prevState.isLiked,
+            }))
+          }
+
+          const saveText = isSaved ? 'Saved' : 'Save'
           return (
-            <SuccessContainer>
-              <ImageElement
-                src={thumbnailUrl}
-                alt="video thumbnail"
-                onClick={onPlayVideo}
-              />
+            <SuccessContainer isDarkTheme={isDarkTheme}>
+              <ReactPlayer url={videoUrl} controls />
+              <HeadingElement isDarkTheme={isDarkTheme}>{title}</HeadingElement>
               <DetailsContainer>
-                <HeadingElement>{title}</HeadingElement>
-                <UnorderedList>
-                  <DescriptionListTypeNone>{viewCount}</DescriptionListTypeNone>
-                  <Description>{formattedTime}</Description>
-                </UnorderedList>
-                <LikesAndSaveContainer>
-                  <LikeContainer>
-                    <LikeButton
-                      type="button"
-                      onClick={changeLikeStatus}
-                      isLiked={isLiked}
-                    >
-                      <AiOutlineLike size={20} />
-                      <Text>Like</Text>
-                    </LikeButton>
-                  </LikeContainer>
-                  <LikeContainer>
-                    <BiDislike size={20} />
-                    <Text>Dislike</Text>
-                  </LikeContainer>
-                  <LikeContainer>
-                    <FiSave size={20} onClick={changeToSaveList} />
-                    <Text>Save</Text>
-                  </LikeContainer>
-                </LikesAndSaveContainer>
+                <ListAndLikesContainer>
+                  <UnorderedList>
+                    <DescriptionListTypeNone>
+                      {viewCount}
+                    </DescriptionListTypeNone>
+                    <Description>{formattedTime}</Description>
+                  </UnorderedList>
+                  <LikesAndSaveContainer>
+                    <LikeContainer>
+                      <LikeButton
+                        type="button"
+                        onClick={changeLikeStatus}
+                        isLiked={isLiked}
+                      >
+                        <AiOutlineLike size={20} />
+                        <Text isLiked={isLiked}>Like</Text>
+                      </LikeButton>
+                    </LikeContainer>
+                    <LikeContainer>
+                      <DisLikeButton
+                        type="button"
+                        onClick={changeDislike}
+                        isLiked={isLiked}
+                      >
+                        <BiDislike size={20} />
+                        <TextDisLike isLiked={isLiked}>Dislike</TextDisLike>
+                      </DisLikeButton>
+                    </LikeContainer>
+                    <LikeContainer>
+                      <SaveBtn type="button" onClick={changeToSaveList}>
+                        <FiSave size={20} />
+                        <Text>{saveText}</Text>
+                      </SaveBtn>
+                    </LikeContainer>
+                  </LikesAndSaveContainer>
+                </ListAndLikesContainer>
                 <HorizontalLine />
                 <ProfileContainer>
                   <ProfileImage src={profileImageUrl} alt={name} />
@@ -192,7 +211,6 @@ class VideoItemDetails extends Component {
                     <DescriptionDetails>{`${subscriberCount} subscribers`}</DescriptionDetails>
                     <DescriptionDetails>{description}</DescriptionDetails>
                   </ProfileDetails>
-                  <DescriptionDetails>{description}</DescriptionDetails>
                 </ProfileContainer>
               </DetailsContainer>
             </SuccessContainer>
@@ -206,7 +224,7 @@ class VideoItemDetails extends Component {
     const {apiStatus} = this.state
     switch (apiStatus) {
       case apiStatusConstants.in_progress:
-        return this.renderLoadingView()
+        return this.renderInprogressView()
       case apiStatusConstants.failure:
         return this.renderFailureView()
       case apiStatusConstants.success:

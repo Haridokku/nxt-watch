@@ -235,7 +235,7 @@ class Home extends Component {
                         onChange={this.onChangeInputValue}
                       />
                       <CrossButton type="button" data-testid="searchButton">
-                        <IoIosSearch size={20} />
+                        <IoIosSearch size={40} />
                       </CrossButton>
                     </SearchContainer>
                     {this.renderApiStatus()}

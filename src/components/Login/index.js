@@ -95,7 +95,7 @@ class Login extends Component {
               </LabelElement>
               <InputElement
                 id="password"
-                type="password"
+                type={isChecked ? 'text' : 'password'}
                 placeholder="Password"
                 value={password}
                 onChange={this.onChangePassword}

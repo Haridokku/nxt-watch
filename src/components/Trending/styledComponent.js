@@ -5,6 +5,7 @@ export const HomeContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: Center;
+  overflow-y: auto;
 `
 export const TrendingContainer = styled.div`
   height: 100px;
