@@ -64,10 +64,6 @@ class Home extends Component {
     const response = await fetch(url, options)
     const data = await response.json()
     if (response.ok === true) {
-<<<<<<< HEAD
-=======
-      
->>>>>>> 0b4505c1dcd9a4f55783ccd3668167ee74ab91cf
       const updatedData = data.videos.map(each => ({
         id: each.id,
         title: each.title,
