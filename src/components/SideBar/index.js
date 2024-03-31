@@ -72,7 +72,7 @@ const SideBar = () => (
                 />
                 <ImageElement
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-                  alt="linkedIn logo"
+                  alt="linked in logo"
                 />
               </IconsContainer>
               <HeadingElement isDarkTheme={isDarkTheme}>

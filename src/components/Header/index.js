@@ -46,7 +46,7 @@ const Header = props => (
           <Popup modal trigger={logBtn}>
             {close => (
               <PopupElement>
-                <Heading>Are you sure you want to logout?</Heading>
+                <Heading>Are you sure, you want to logout</Heading>
                 <ButtonsContainer>
                   <CancelBtn onClick={() => close()}>Cancel</CancelBtn>
                   <ConfirmBtn onClick={onLogoutFromWebsite}>Confirm</ConfirmBtn>
@@ -85,7 +85,7 @@ const Header = props => (
                 <FaBars size={40} color="#4f46e5" />
 
                 {onLogout(
-                  <LogoutButtonIcon type="button" onClick={onLogout}>
+                  <LogoutButtonIcon type="button">
                     <FiLogOut size={30} />
                   </LogoutButtonIcon>,
                 )}

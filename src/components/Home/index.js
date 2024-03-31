@@ -19,7 +19,6 @@ import {
   ImageElement,
   Description,
   GetButton,
-  ChannelImage,
   LoaderContainer,
   SearchContainer,
   InputElement,
@@ -107,10 +106,6 @@ class Home extends Component {
               </Description>
               <GetButton type="button">GET IT NOW</GetButton>
             </PopupDetails>
-            <ChannelImage
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png"
-              alt="channel logo"
-            />
           </PopupAndChannelContainer>
         )}
       </Popup>
@@ -228,7 +223,7 @@ class Home extends Component {
                   <HomeContainer isDarkTheme={isDarkTheme} data-testid="home">
                     <SearchContainer>
                       <InputElement
-                        type="text"
+                        type="search"
                         value={searchValue}
                         isDarkTheme={isDarkTheme}
                         placeHolder="search"

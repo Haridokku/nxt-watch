@@ -19,9 +19,19 @@ class App extends Component {
   }
 
   saveOnList = objectDetails => {
-    this.setState(prevState => ({
-      saveList: [...prevState.saveList, objectDetails],
-    }))
+    const {savedList} = this.state
+    const item = savedList.find(each => each.id === objectDetails.id)
+    console.log(item)
+    if (item) {
+      const filteredList = savedList.filter(
+        eachItem => eachItem.id !== objectDetails.id,
+      )
+      this.setState({savedList: filteredList})
+    } else {
+      this.setState(prevState => ({
+        savedList: [...prevState.savedList, objectDetails],
+      }))
+    }
   }
 
   render() {

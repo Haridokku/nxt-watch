@@ -39,6 +39,8 @@ export const UnorderedList = styled.ul`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  list-style-type: none;
+  text-decoration: none;
 `
 export const ListItem = styled.li`
   list-style-type: none;
@@ -59,7 +61,7 @@ export const ContactDetails = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `
-export const HeadingElement = styled.h1`
+export const HeadingElement = styled.p`
   color: ${props => (props.isDarkTheme ? '#f1f5f9' : '#231f20')};
   font-size: 25px;
   font-weight: bold;
@@ -67,7 +69,7 @@ export const HeadingElement = styled.h1`
 export const IconsContainer = styled.div`
   width: 50%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `
 export const ImageElement = styled.img`

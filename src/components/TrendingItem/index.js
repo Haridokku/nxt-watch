@@ -8,10 +8,10 @@ import {
   ImageElement,
   VideoDetailsContainer,
   ViewsDetails,
-  Description,
   UnorderedList,
   DescriptionWithListType,
   DescriptionWithListTypeNone,
+  Describe,
 } from './styledComponent'
 
 const TrendingItem = props => {
@@ -37,10 +37,14 @@ const TrendingItem = props => {
               <HeadingElement>{title}</HeadingElement>
               <UnorderedList>
                 <DescriptionWithListTypeNone>
-                  {name}
+                  <Describe>{name}</Describe>
                 </DescriptionWithListTypeNone>
-                <DescriptionWithListType>{viewCount}</DescriptionWithListType>
-                <Description>{formatTime}</Description>
+                <DescriptionWithListType>
+                  <Describe>{viewCount}</Describe>
+                </DescriptionWithListType>
+                <DescriptionWithListType>
+                  <Describe>{formatTime}</Describe>
+                </DescriptionWithListType>
               </UnorderedList>
             </ViewsDetails>
           </VideoDetailsContainer>

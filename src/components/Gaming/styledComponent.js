@@ -94,11 +94,11 @@ export const ContentAndSideBar = styled.div`
   justify-content: center;
 `
 export const TrendingContainer = styled.div`
-  height: 100px;
+  height: 300px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${props => (props.isDarkTheme ? '#1e293b' : '#f1f1f1')};
+  background-color: ${props => (props.isDarkTheme ? '#1e293b' : '#d7dfe9')};
 `
 export const ImageContainer = styled.div`
   background-color: ${props => (props.isDarkTheme ? '#000000' : '#cbd5e1')};

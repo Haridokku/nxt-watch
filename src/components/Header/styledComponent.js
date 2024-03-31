@@ -74,7 +74,7 @@ export const PopupElement = styled.div`
   flex-direction: column;
   align-items: center;
 `
-export const Heading = styled.h1`
+export const Heading = styled.p`
   color: #231f20;
   font-size: 20px;
   font-weight: bold;

@@ -11,6 +11,7 @@ import {
   ViewsDetails,
   Description,
   UnorderedList,
+  ListItem,
   DescriptionWithListType,
 } from './styledComponent'
 
@@ -24,14 +25,18 @@ const VideoItem = props => {
       <Link to={`/videos/${id}`}>
         <ImageElement src={thumbnailUrl} alt="video thumbnail" />
         <ContentDetails>
-          <ProfileImage src={profileImageUrl} alt={name} />
+          <ProfileImage src={profileImageUrl} alt="channel logo" />
           <VideoDescription>
             <HeadingElement>{title}</HeadingElement>
             <ViewsDetails>
               <Description>{name}</Description>
               <UnorderedList>
-                <DescriptionWithListType>{viewCount}</DescriptionWithListType>
-                <Description>{formatTime}</Description>
+                <ListItem>
+                  <DescriptionWithListType>{viewCount}</DescriptionWithListType>
+                </ListItem>
+                <ListItem>
+                  <Description>{formatTime}</Description>
+                </ListItem>
               </UnorderedList>
             </ViewsDetails>
           </VideoDescription>

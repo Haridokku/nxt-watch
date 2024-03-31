@@ -24,6 +24,8 @@ export const PopupContainer = styled.div`
   padding: 20px;
   height: 100px;
   width: 100%;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-size: cover;
 `
 export const PopupAndChannelContainer = styled.div`
   display: flex;

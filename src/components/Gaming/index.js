@@ -87,9 +87,7 @@ class Gaming extends Component {
           <FailureContainer isDarkTheme={isDarkTheme}>
             <ImageElement src={imgUrl} alt="failure view" />
             <HeadingElement>Oops! Something Went Wrong</HeadingElement>
-            <Description>
-              We are having trouble to complete your request. Please try again
-            </Description>
+            <Description>We are having some trouble</Description>
             <RetryButton type="button" onClick={onRetryApi}>
               Retry
             </RetryButton>
@@ -103,12 +101,6 @@ class Gaming extends Component {
     const {videosList} = this.state
     return (
       <>
-        <TrendingContainer>
-          <ImageContainer>
-            <SiYoutubegaming size={20} />
-          </ImageContainer>
-          <HeadingElement>Trending</HeadingElement>
-        </TrendingContainer>
         <UnorderedList>
           {videosList.map(each => (
             <GamingItem key={each.id} videoDetails={each} />
@@ -143,6 +135,12 @@ class Gaming extends Component {
               <ContentAndSideBar>
                 <SideBar />
                 <HomeContainer isDarkTheme={isDarkTheme} data-testid="gaming">
+                  <TrendingContainer>
+                    <ImageContainer>
+                      <SiYoutubegaming size={20} color="#ff0000" />
+                    </ImageContainer>
+                    <HeadingElement>Gaming</HeadingElement>
+                  </TrendingContainer>
                   {this.renderApiStatus()}
                 </HomeContainer>
               </ContentAndSideBar>

@@ -11,7 +11,7 @@ export const ImageElement = styled.img`
   width: 150px;
   height: 150px;
 `
-export const HeadingItem = styled.h1`
+export const HeadingItem = styled.p`
   color: ${props => (props.isDarkTheme ? '#f8fafc' : '#1e293b')};
   font-size: 25px;
   font-weight: bold;

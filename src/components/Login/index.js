@@ -108,7 +108,7 @@ class Login extends Component {
                 checked={isChecked}
                 onClick={this.changeCheckboxStatus}
               />
-              <LabelElement htmlFor="checkbox">Show Password</LabelElement>
+              <LabelElement htmlFor="checkbox1">Show Password</LabelElement>
             </CheckboxContainer>
             <ButtonElement type="submit">Login</ButtonElement>
             {isSubmitError && <Description>{`*${errorMsg}`}</Description>}

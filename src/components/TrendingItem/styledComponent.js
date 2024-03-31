@@ -37,7 +37,7 @@ export const VideoDescription = styled.div`
     align-items: Flex-start;
   }
 `
-export const HeadingElement = styled.h1`
+export const HeadingElement = styled.p`
   color: #181818;
   font-size: 20px;
   font-weight: bold;
@@ -73,4 +73,10 @@ export const DescriptionWithListType = styled(Description)`
 `
 export const DescriptionWithListTypeNone = styled(Description)`
   list-style-type: none;
+`
+export const Describe = styled.p`
+  color: #616e7c;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: 'Roboto';
 `

@@ -48,7 +48,9 @@ const SavedVideos = () => (
                     <ImageContainer isDarkTheme={isDarkTheme}>
                       <AiFillFire size={20} />
                     </ImageContainer>
-                    <HeadingElement>Saved Videos</HeadingElement>
+                    <HeadingElement isDarkTheme={isDarkTheme}>
+                      Saved Videos
+                    </HeadingElement>
                   </TrendingContainer>
                   <UnorderedList>
                     {savedList.map(each => (

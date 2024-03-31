@@ -14,7 +14,9 @@ import {
   Description,
   LoaderContainer,
   FailureContainer,
+  FailureText,
   HeadingElement,
+  HeadingTitle,
   RetryButton,
   UnorderedList,
   DescriptionListTypeNone,
@@ -36,6 +38,7 @@ import {
   ContentAndSideBar,
   HomeContainer,
   SaveBtn,
+  SaveBtnText,
 } from './styledComponent'
 
 const apiStatusConstants = {
@@ -50,10 +53,12 @@ class VideoItemDetails extends Component {
     apiStatus: apiStatusConstants.initial,
     isLiked: false,
     isSaved: false,
+    isDislike: false,
   }
 
   componentDidMount() {
     this.renderVideoDetails()
+    this.renderCheckVideoItemInSavedList()
   }
 
   renderVideoDetails = async () => {
@@ -71,7 +76,6 @@ class VideoItemDetails extends Component {
     }
     const response = await fetch(url, options)
     const data = await response.json()
-    console.log(data)
     if (response.ok === true) {
       const responseObject = data.video_details
       const updatedObject = {
@@ -97,6 +101,23 @@ class VideoItemDetails extends Component {
     }
   }
 
+  renderCheckVideoItemInSavedList = () => {
+    const {videoObject} = this.state
+    console.log(videoObject)
+    return (
+      <CartContext.Consumer>
+        {value => {
+          const {savedList} = value
+          const {id} = videoObject
+          const isAlreadySaved = savedList.filter(each => each.id === id)
+          if (isAlreadySaved.length !== 0) {
+            this.setState(prevState => ({isSaved: !prevState.isSaved}))
+          }
+        }}
+      </CartContext.Consumer>
+    )
+  }
+
   renderInprogressView = () => (
     <LoaderContainer data-testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height={50} width={50} />
@@ -112,15 +133,18 @@ class VideoItemDetails extends Component {
           : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
 
         const onRetryApi = () => {
-          this.renderApiCall()
+          this.renderVideoDetails()
         }
         return (
           <FailureContainer isDarkTheme={isDarkTheme}>
             <ImageElement src={imgUrl} alt="failure view" />
-            <HeadingElement>Oops! Something Went Wrong</HeadingElement>
-            <Description>
-              We are having trouble to complete your request. Please try again
-            </Description>
+            <HeadingTitle isDarkTheme={isDarkTheme}>
+              Oops! Something Went Wrong
+            </HeadingTitle>
+            <FailureText>
+              We are having some trouble to complete your request. Please try
+              again.
+            </FailureText>
             <RetryButton type="button" onClick={onRetryApi}>
               Retry
             </RetryButton>
@@ -131,8 +155,9 @@ class VideoItemDetails extends Component {
   )
 
   renderSuccessView = () => {
-    const {videoObject, isLiked} = this.state
+    const {videoObject, isLiked, isSaved, isDislike} = this.state
     const {
+      id,
       videoUrl,
       title,
       channel,
@@ -146,18 +171,30 @@ class VideoItemDetails extends Component {
     return (
       <CartContext.Consumer>
         {value => {
-          const {moveToSaveList, isDarkTheme} = value
+          const {moveToSaveList, isDarkTheme, savedList} = value
+          const isThereAnyProduct = savedList.find(each => each.id === id)
+          const renderSaveDetails = () => {
+            this.setState({isSaved: true})
+          }
+
+          if (isThereAnyProduct) {
+            renderSaveDetails()
+          }
+          console.log(isThereAnyProduct)
           const changeToSaveList = () => {
             this.setState(prevState => ({isSaved: !prevState.isSaved}))
             moveToSaveList(videoObject)
           }
           const changeLikeStatus = () => {
-            this.setState(prevState => ({isLiked: !prevState.isLiked}))
+            this.setState(prevState => ({
+              isLiked: !prevState.isLiked,
+              isDislike: false,
+            }))
           }
           const changeDislike = () => {
             this.setState(prevState => ({
               isDislike: !prevState.isDislike,
-              isLiked: !prevState.isLiked,
+              isLiked: false,
             }))
           }
 
@@ -170,9 +207,11 @@ class VideoItemDetails extends Component {
                 <ListAndLikesContainer>
                   <UnorderedList>
                     <DescriptionListTypeNone>
-                      {viewCount}
+                      <DescriptionDetails>{viewCount}</DescriptionDetails>
                     </DescriptionListTypeNone>
-                    <Description>{formattedTime}</Description>
+                    <Description>
+                      <DescriptionDetails>{formattedTime}</DescriptionDetails>
+                    </Description>
                   </UnorderedList>
                   <LikesAndSaveContainer>
                     <LikeContainer>
@@ -189,23 +228,27 @@ class VideoItemDetails extends Component {
                       <DisLikeButton
                         type="button"
                         onClick={changeDislike}
-                        isLiked={isLiked}
+                        isDislike={isDislike}
                       >
                         <BiDislike size={20} />
-                        <TextDisLike isLiked={isLiked}>Dislike</TextDisLike>
+                        <TextDisLike isDislike={isDislike}>Dislike</TextDisLike>
                       </DisLikeButton>
                     </LikeContainer>
                     <LikeContainer>
-                      <SaveBtn type="button" onClick={changeToSaveList}>
+                      <SaveBtn
+                        type="button"
+                        onClick={changeToSaveList}
+                        isSaved={isSaved}
+                      >
                         <FiSave size={20} />
-                        <Text>{saveText}</Text>
+                        <SaveBtnText isSaved={isSaved}>{saveText}</SaveBtnText>
                       </SaveBtn>
                     </LikeContainer>
                   </LikesAndSaveContainer>
                 </ListAndLikesContainer>
                 <HorizontalLine />
                 <ProfileContainer>
-                  <ProfileImage src={profileImageUrl} alt={name} />
+                  <ProfileImage src={profileImageUrl} alt="channel logo" />
                   <ProfileDetails>
                     <Heading2>{name}</Heading2>
                     <DescriptionDetails>{`${subscriberCount} subscribers`}</DescriptionDetails>

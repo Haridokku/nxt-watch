@@ -22,6 +22,7 @@ export const ContentDetails = styled.div`
 export const ProfileImage = styled.img`
   width: 50px;
   height: 50px;
+  align-items: flex-start;
 `
 export const VideoDescription = styled.div`
   list-style-type: none;
@@ -32,13 +33,13 @@ export const VideoDescription = styled.div`
     align-items: Flex-start;
   }
 `
-export const HeadingElement = styled.h1`
+export const HeadingElement = styled.p`
   color: #181818;
   font-size: 20px;
   font-weight: bold;
   font-family: 'Roboto';
 `
-export const Description = styled.li`
+export const Description = styled.p`
   color: #616e7c;
   font-size: 15px;
   font-weight: 300;
@@ -46,11 +47,18 @@ export const Description = styled.li`
 `
 export const ViewsDetails = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 `
 export const UnorderedList = styled.ul`
   list-style-type: circle;
+`
+export const ListItem = styled.li`
+  color: #616e7c;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: 'Roboto';
 `
 export const DescriptionWithListType = styled(Description)`
   list-style-type: circle;

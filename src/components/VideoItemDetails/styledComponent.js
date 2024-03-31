@@ -52,7 +52,13 @@ export const DetailsContainer = styled.div`
   align-items: center;
   padding: 20px;
 `
-export const HeadingElement = styled.h1`
+export const HeadingTitle = styled.h1`
+color:${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')}
+font-weight:600;
+font-size:25px;
+align-self:flex-start;
+`
+export const HeadingElement = styled.p`
 color:${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')}
 font-weight:600;
 font-size:25px;
@@ -80,7 +86,10 @@ export const Text = styled.span`
   margin-bottom: 3px;
 `
 export const TextDisLike = styled(Text)`
-  color: ${props => (props.isLiked ? '#64748b' : '#2563eb')};
+  color: ${props => (props.isDislike ? '#2563eb' : '#64748b')};
+`
+export const SaveBtnText = styled(Text)`
+  color: ${props => (props.isSaved ? '#2563eb' : '#64748b')};
 `
 export const HorizontalLine = styled.hr`
   width: 100%;
@@ -135,7 +144,12 @@ flex-direction:column:
 justify-content:center;
 align-items:center;
 `
-
+export const FailureText = styled.p`
+  color: #606060;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto';
+`
 export const RetryButton = styled.button`
   color: #ffffff;
   background-color: #3b82f6;
@@ -154,16 +168,15 @@ export const LikeButton = styled.button`
   width: 100px;
 `
 export const DisLikeButton = styled(LikeButton)`
-  color: #64748b;
   border: none;
   outline: none;
-  color: ${props => (props.isLiked ? '#64748b' : '#2563eb')};
+  color: ${props => (props.isDislike ? '#2563eb' : '#64748b')};
   background-color: transparent;
   margin-right: 10px;
   cursor: pointer;
 `
 export const SaveBtn = styled.button`
-  color: ${props => (props.isLiked ? '#2563eb' : '#64748b')};
+  color: ${props => (props.isSaved ? '#2563eb' : '#64748b')};
   background-color: transparent;
   margin-right: 10px;
   cursor: pointer;

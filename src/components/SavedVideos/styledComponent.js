@@ -9,9 +9,11 @@ export const SavedListContainer = styled.div`
 `
 export const TrendingContainer = styled.div`
   height: 100px;
+  width: 60vw;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  padding-left: 20px;
   background-color: ${props => (props.isDarkTheme ? '#1e293b' : '#f1f1f1')};
 `
 export const ImageContainer = styled.div`
@@ -22,6 +24,7 @@ export const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 35px;
+  margin-right: 30px;
 `
 export const HeadingElement = styled.h1`
 color:${props => (props.isDarkTheme ? '#ffffff' : '#1e293b')}
