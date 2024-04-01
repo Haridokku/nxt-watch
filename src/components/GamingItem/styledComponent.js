@@ -1,5 +1,12 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+`
+export const ListItem = styled.li`
+  list-style-type: none;
+`
 export const GamingItemContainer = styled.div`
   display: flex;
   flex-direction: column;

@@ -1,7 +1,7 @@
-import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 
 import {
+  StyledLink,
   ListItemDetails,
   ImageElement,
   ContentDetails,
@@ -22,7 +22,7 @@ const VideoItem = props => {
   const formatTime = formatDistanceToNow(new Date(publishedAt))
   return (
     <ListItemDetails>
-      <Link to={`/videos/${id}`}>
+      <StyledLink to={`/videos/${id}`}>
         <ImageElement src={thumbnailUrl} alt="video thumbnail" />
         <ContentDetails>
           <ProfileImage src={profileImageUrl} alt="channel logo" />
@@ -41,7 +41,7 @@ const VideoItem = props => {
             </ViewsDetails>
           </VideoDescription>
         </ContentDetails>
-      </Link>
+      </StyledLink>
     </ListItemDetails>
   )
 }

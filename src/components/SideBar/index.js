@@ -1,5 +1,3 @@
-import {Link} from 'react-router-dom'
-
 import {MdHome} from 'react-icons/md'
 import {FiSave} from 'react-icons/fi'
 import {HiFire} from 'react-icons/hi'
@@ -8,6 +6,7 @@ import {SiYoutubegaming} from 'react-icons/si'
 import CartContext from '../../context/CartContext'
 
 import {
+  StyledLink,
   PopupAndContactDetails,
   HeaderDetails,
   UnorderedList,
@@ -28,33 +27,33 @@ const SideBar = () => (
           <PopupAndContactDetails>
             <HeaderDetails>
               <UnorderedList>
-                <Link to="/">
+                <StyledLink to="/">
                   <ListItem>
                     <MdHome />
                     <Describe>Home</Describe>
                   </ListItem>
-                </Link>
+                </StyledLink>
 
-                <Link to="/trending">
+                <StyledLink to="/trending">
                   <ListItem>
                     <HiFire />
                     <Describe>Trending</Describe>
                   </ListItem>
-                </Link>
+                </StyledLink>
 
-                <Link to="/gaming">
+                <StyledLink to="/gaming">
                   <ListItem>
                     <SiYoutubegaming />
                     <Describe>Gaming</Describe>
                   </ListItem>
-                </Link>
+                </StyledLink>
 
-                <Link to="/saved-videos">
+                <StyledLink to="/saved-videos">
                   <ListItem>
                     <FiSave />
                     <Describe>Saved Videos</Describe>
                   </ListItem>
-                </Link>
+                </StyledLink>
               </UnorderedList>
             </HeaderDetails>
             <ContactDetails>

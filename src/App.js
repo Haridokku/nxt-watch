@@ -21,7 +21,6 @@ class App extends Component {
   saveOnList = objectDetails => {
     const {savedList} = this.state
     const item = savedList.find(each => each.id === objectDetails.id)
-    console.log(item)
     if (item) {
       const filteredList = savedList.filter(
         eachItem => eachItem.id !== objectDetails.id,

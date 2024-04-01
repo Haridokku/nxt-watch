@@ -53,7 +53,6 @@ class Home extends Component {
     const {searchValue} = this.state
     const url = `https://apis.ccbp.in/videos/all?search=${searchValue}`
     const jwtToken = Cookies.get('jwt_token')
-    console.log(jwtToken)
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -74,7 +73,6 @@ class Home extends Component {
         viewCount: each.view_count,
         publishedAt: each.published_at,
       }))
-      console.log(updatedData)
       this.setState({
         videosList: updatedData,
         apiStatus: apiStatusConstants.success,
@@ -190,7 +188,6 @@ class Home extends Component {
 
   renderApiStatus = () => {
     const {apiStatus} = this.state
-    console.log(apiStatus)
     switch (apiStatus) {
       case apiStatusConstants.in_progress:
         return this.renderInprogressView()

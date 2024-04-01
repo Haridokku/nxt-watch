@@ -1,7 +1,7 @@
-import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 
 import {
+  StyledLink,
   VideoItemContainer,
   ProfileImage,
   HeadingElement,
@@ -29,7 +29,7 @@ const TrendingItem = props => {
   return (
     <>
       <VideoItemContainer>
-        <Link to={`/videos/${id}`}>
+        <StyledLink to={`/videos/${id}`}>
           <ImageElement src={thumbnailUrl} alt="video thumbnail" />
           <VideoDetailsContainer>
             <ProfileImage src={profileImageUrl} alt="profile" />
@@ -48,7 +48,7 @@ const TrendingItem = props => {
               </UnorderedList>
             </ViewsDetails>
           </VideoDetailsContainer>
-        </Link>
+        </StyledLink>
       </VideoItemContainer>
     </>
   )

@@ -58,7 +58,23 @@ class VideoItemDetails extends Component {
 
   componentDidMount() {
     this.renderVideoDetails()
-    this.renderCheckVideoItemInSavedList()
+  }
+
+  renderCheckVideoItemInSavedList = () => {
+    const {videoObject} = this.state
+    return (
+      <CartContext.Consumer>
+        {value => {
+          const {savedList} = value
+          const {id} = videoObject
+          const isAlreadySaved = savedList.filter(each => each.id === id)
+          console.log(isAlreadySaved)
+          if (isAlreadySaved.length !== 0) {
+            this.setState(prevState => ({isSaved: !prevState.isSaved}))
+          }
+        }}
+      </CartContext.Consumer>
+    )
   }
 
   renderVideoDetails = async () => {
@@ -92,30 +108,16 @@ class VideoItemDetails extends Component {
         publishedAt: responseObject.published_at,
         description: responseObject.description,
       }
-      this.setState({
-        videoObject: updatedObject,
-        apiStatus: apiStatusConstants.success,
-      })
+      this.setState(
+        {
+          videoObject: updatedObject,
+          apiStatus: apiStatusConstants.success,
+        },
+        this.renderCheckVideoItemInSavedList,
+      )
     } else {
       this.setState({apiStatus: apiStatusConstants.failure})
     }
-  }
-
-  renderCheckVideoItemInSavedList = () => {
-    const {videoObject} = this.state
-    console.log(videoObject)
-    return (
-      <CartContext.Consumer>
-        {value => {
-          const {savedList} = value
-          const {id} = videoObject
-          const isAlreadySaved = savedList.filter(each => each.id === id)
-          if (isAlreadySaved.length !== 0) {
-            this.setState(prevState => ({isSaved: !prevState.isSaved}))
-          }
-        }}
-      </CartContext.Consumer>
-    )
   }
 
   renderInprogressView = () => (
@@ -157,7 +159,6 @@ class VideoItemDetails extends Component {
   renderSuccessView = () => {
     const {videoObject, isLiked, isSaved, isDislike} = this.state
     const {
-      id,
       videoUrl,
       title,
       channel,
@@ -171,16 +172,8 @@ class VideoItemDetails extends Component {
     return (
       <CartContext.Consumer>
         {value => {
-          const {moveToSaveList, isDarkTheme, savedList} = value
-          const isThereAnyProduct = savedList.find(each => each.id === id)
-          const renderSaveDetails = () => {
-            this.setState({isSaved: true})
-          }
+          const {moveToSaveList, isDarkTheme} = value
 
-          if (isThereAnyProduct) {
-            renderSaveDetails()
-          }
-          console.log(isThereAnyProduct)
           const changeToSaveList = () => {
             this.setState(prevState => ({isSaved: !prevState.isSaved}))
             moveToSaveList(videoObject)
