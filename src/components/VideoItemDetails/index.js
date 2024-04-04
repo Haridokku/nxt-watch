@@ -69,8 +69,12 @@ class VideoItemDetails extends Component {
           const {id} = videoObject
           const isAlreadySaved = savedList.filter(each => each.id === id)
           console.log(isAlreadySaved)
-          if (isAlreadySaved.length !== 0) {
-            this.setState(prevState => ({isSaved: !prevState.isSaved}))
+          if (savedList.length >= 1) {
+            const isAlreadySaved = savedList.filter(each => each.id === id)
+            console.log(isAlreadySaved)
+            if (isAlreadySaved.length !== 0) {
+              this.setState(prevState => ({isSaved: !prevState.isSaved}))
+            }
           }
         }}
       </CartContext.Consumer>
