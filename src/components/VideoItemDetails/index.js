@@ -60,6 +60,30 @@ class VideoItemDetails extends Component {
     this.renderVideoDetails()
   }
 
+<<<<<<< HEAD
+=======
+  renderCheckVideoItemInSavedList = () => {
+    const {videoObject} = this.state
+    return (
+      <CartContext.Consumer>
+        {value => {
+          const {savedList} = value
+          const {id} = videoObject
+          const isAlreadySaved = savedList.filter(each => each.id === id)
+          console.log(isAlreadySaved)
+          if (savedList.length >= 1) {
+            const isAlreadySaved = savedList.filter(each => each.id === id)
+            console.log(isAlreadySaved)
+            if (isAlreadySaved.length !== 0) {
+              this.setState(prevState => ({isSaved: !prevState.isSaved}))
+            }
+          }
+        }}
+      </CartContext.Consumer>
+    )
+  }
+
+>>>>>>> d7da93a624ff6cdf279827762ee78e0259121c7e
   renderVideoDetails = async () => {
     this.setState({apiStatus: apiStatusConstants.in_progress})
     const jwtToken = Cookies.get('jwt_token')
