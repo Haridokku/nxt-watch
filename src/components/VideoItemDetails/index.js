@@ -60,23 +60,6 @@ class VideoItemDetails extends Component {
     this.renderVideoDetails()
   }
 
-  renderCheckVideoItemInSavedList = () => {
-    const {videoObject} = this.state
-    return (
-      <CartContext.Consumer>
-        {value => {
-          const {savedList} = value
-          const {id} = videoObject
-          const isAlreadySaved = savedList.filter(each => each.id === id)
-          console.log(isAlreadySaved)
-          if (isAlreadySaved.length !== 0) {
-            this.setState(prevState => ({isSaved: !prevState.isSaved}))
-          }
-        }}
-      </CartContext.Consumer>
-    )
-  }
-
   renderVideoDetails = async () => {
     this.setState({apiStatus: apiStatusConstants.in_progress})
     const jwtToken = Cookies.get('jwt_token')
@@ -108,13 +91,10 @@ class VideoItemDetails extends Component {
         publishedAt: responseObject.published_at,
         description: responseObject.description,
       }
-      this.setState(
-        {
-          videoObject: updatedObject,
-          apiStatus: apiStatusConstants.success,
-        },
-        this.renderCheckVideoItemInSavedList,
-      )
+      this.setState({
+        videoObject: updatedObject,
+        apiStatus: apiStatusConstants.success,
+      })
     } else {
       this.setState({apiStatus: apiStatusConstants.failure})
     }
@@ -159,6 +139,7 @@ class VideoItemDetails extends Component {
   renderSuccessView = () => {
     const {videoObject, isLiked, isSaved, isDislike} = this.state
     const {
+      id,
       videoUrl,
       title,
       channel,
@@ -172,7 +153,7 @@ class VideoItemDetails extends Component {
     return (
       <CartContext.Consumer>
         {value => {
-          const {moveToSaveList, isDarkTheme} = value
+          const {moveToSaveList, isDarkTheme, savedList} = value
 
           const changeToSaveList = () => {
             this.setState(prevState => ({isSaved: !prevState.isSaved}))
@@ -191,7 +172,14 @@ class VideoItemDetails extends Component {
             }))
           }
 
-          const saveText = isSaved ? 'Saved' : 'Save'
+          const saveText = savedList.find(each => each.id === id)
+            ? 'Saved'
+            : 'Save'
+
+          if (saveText === 'Saved') {
+            this.setState((isSaved: true))
+          }
+
           return (
             <SuccessContainer isDarkTheme={isDarkTheme}>
               <ReactPlayer url={videoUrl} controls />

@@ -50,7 +50,6 @@ class Login extends Component {
     event.preventDefault()
     const {username, password} = this.state
     const userDetails = {username, password}
-    console.log(userDetails)
     const options = {
       method: 'POST',
       body: JSON.stringify(userDetails),
