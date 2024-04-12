@@ -12,7 +12,7 @@ import {
   Description,
   UnorderedList,
   ListItem,
-  DescriptionWithListType,
+  ListItemWithType,
 } from './styledComponent'
 
 const VideoItem = props => {
@@ -31,9 +31,9 @@ const VideoItem = props => {
             <ViewsDetails>
               <Description>{name}</Description>
               <UnorderedList>
-                <ListItem>
-                  <DescriptionWithListType>{viewCount}</DescriptionWithListType>
-                </ListItem>
+                <ListItemWithType>
+                  <Description>{`${viewCount} views`}</Description>
+                </ListItemWithType>
                 <ListItem>
                   <Description>{formatTime}</Description>
                 </ListItem>

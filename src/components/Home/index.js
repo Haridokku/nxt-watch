@@ -223,7 +223,7 @@ class Home extends Component {
                         type="search"
                         value={searchValue}
                         isDarkTheme={isDarkTheme}
-                        placeHolder="Search"
+                        placeholder="Search"
                         onChange={this.onChangeInputValue}
                       />
                       <CrossButton type="button" data-testid="searchButton">

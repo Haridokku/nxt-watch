@@ -21,7 +21,7 @@ import {
   CancelBtn,
   ConfirmBtn,
   LogoutButtonIcon,
-  ProfileImg,
+  ProfileElement,
 } from './styledComponent'
 
 const Header = props => (
@@ -108,7 +108,8 @@ const Header = props => (
                     <FaMoon size={50} />
                   </ThemeButton>
                 )}
-                <ProfileImg
+
+                <ProfileElement
                   src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
                   alt="profile"
                 />

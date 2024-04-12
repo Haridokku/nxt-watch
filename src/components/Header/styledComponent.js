@@ -97,7 +97,7 @@ export const ConfirmBtn = styled.button`
   border: none;
   padding: 10px;
 `
-export const ProfileImg = styled.img`
-  width: 50px;
-  height: 50px;
+export const ProfileElement = styled.img`
+  width: 60px;
+  height: 60px;
 `

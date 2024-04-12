@@ -52,7 +52,6 @@ class VideoItemDetails extends Component {
     videoObject: {},
     apiStatus: apiStatusConstants.initial,
     isLiked: false,
-    isSaved: false,
     isDislike: false,
   }
 
@@ -60,30 +59,6 @@ class VideoItemDetails extends Component {
     this.renderVideoDetails()
   }
 
-<<<<<<< HEAD
-=======
-  renderCheckVideoItemInSavedList = () => {
-    const {videoObject} = this.state
-    return (
-      <CartContext.Consumer>
-        {value => {
-          const {savedList} = value
-          const {id} = videoObject
-          const isAlreadySaved = savedList.filter(each => each.id === id)
-          console.log(isAlreadySaved)
-          if (savedList.length >= 1) {
-            const isAlreadySaved = savedList.filter(each => each.id === id)
-            console.log(isAlreadySaved)
-            if (isAlreadySaved.length !== 0) {
-              this.setState(prevState => ({isSaved: !prevState.isSaved}))
-            }
-          }
-        }}
-      </CartContext.Consumer>
-    )
-  }
-
->>>>>>> d7da93a624ff6cdf279827762ee78e0259121c7e
   renderVideoDetails = async () => {
     this.setState({apiStatus: apiStatusConstants.in_progress})
     const jwtToken = Cookies.get('jwt_token')
@@ -161,7 +136,7 @@ class VideoItemDetails extends Component {
   )
 
   renderSuccessView = () => {
-    const {videoObject, isLiked, isSaved, isDislike} = this.state
+    const {videoObject, isLiked, isDislike} = this.state
     const {
       id,
       videoUrl,
@@ -180,7 +155,6 @@ class VideoItemDetails extends Component {
           const {moveToSaveList, isDarkTheme, savedList} = value
 
           const changeToSaveList = () => {
-            this.setState(prevState => ({isSaved: !prevState.isSaved}))
             moveToSaveList(videoObject)
           }
           const changeLikeStatus = () => {
@@ -199,10 +173,6 @@ class VideoItemDetails extends Component {
           const saveText = savedList.find(each => each.id === id)
             ? 'Saved'
             : 'Save'
-
-          if (saveText === 'Saved') {
-            this.setState((isSaved: true))
-          }
 
           return (
             <SuccessContainer isDarkTheme={isDarkTheme}>
@@ -243,10 +213,12 @@ class VideoItemDetails extends Component {
                       <SaveBtn
                         type="button"
                         onClick={changeToSaveList}
-                        isSaved={isSaved}
+                        isSaved={saveText === 'Saved'}
                       >
                         <FiSave size={20} />
-                        <SaveBtnText isSaved={isSaved}>{saveText}</SaveBtnText>
+                        <SaveBtnText isSaved={saveText === 'Saved'}>
+                          {saveText}
+                        </SaveBtnText>
                       </SaveBtn>
                     </LikeContainer>
                   </LikesAndSaveContainer>
