@@ -59,10 +59,6 @@ class VideoItemDetails extends Component {
     this.renderVideoDetails()
   }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c82af8c32269421ffe7d4f2b98f778e72643d64d
   renderVideoDetails = async () => {
     this.setState({apiStatus: apiStatusConstants.in_progress})
     const jwtToken = Cookies.get('jwt_token')
